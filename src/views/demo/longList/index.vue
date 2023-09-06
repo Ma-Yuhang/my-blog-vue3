@@ -10,8 +10,8 @@
 
 <script setup>
 import { reactive } from 'vue'
-import LongListItem from '../../components/longListItem.vue'
-import RecycleScroller from '../../components/RecycleScroller.vue'
+import LongListItem from '@/components/longListItem.vue'
+import RecycleScroller from '@/components/RecycleScroller.vue'
 // 长列表数据
 let listData = reactive([])
 
