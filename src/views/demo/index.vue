@@ -14,7 +14,7 @@ import { useRouter } from 'vue-router';
 
 // 路由对象
 const $router = useRouter()
-console.log($router.getRoutes());
+
 const goTodo = () => {
   $router.push('/demo/todo')
 }
