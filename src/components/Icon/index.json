@@ -1,0 +1,21 @@
+{
+  "home": "icon-home",
+  "success": "icon-zhengque",
+  "error": "icon-cuowu",
+  "close": "icon-guanbi",
+  "warn": "icon-jinggao",
+  "info": "icon-about",
+  "code": "icon-code",
+  "weixin": "icon-weixin",
+  "email": "icon-email",
+  "github": "icon-github",
+  "qq": "icon-QQ1",
+  "up": "icon-arrow-up",
+  "down": "icon-arrow-down",
+  "left": "icon-arrow-up-copy-copy",
+  "right": "icon-arrow-up-copy",
+  "firstPage": "icon-xiangzuoshouqi-copy",
+  "lastPage": "icon-xiangzuoshouqi-copy-copy",
+  "empty": "icon-empty",
+  "chat": "icon-liuyan"
+}
