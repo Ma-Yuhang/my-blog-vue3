@@ -26,7 +26,7 @@
     <button
       class="btn"
       :class="{ disabled: currentPage === totalPage }"
-      @click="changePageHandle(['current-page'] + 1)"
+      @click="changePageHandle(currentPage + 1)"
     >
       <Icon type="right" size="12px" />
     </button>
