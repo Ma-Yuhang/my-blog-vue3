@@ -1,5 +1,5 @@
 <template>
-  <i :class="`iconfont ${fontClass}`" :style="{fontSize: size}"></i>
+  <i :class="`iconfont ${fontClass}`" :style="{fontSize: size, color}"></i>
 </template>
 
 <script setup>
@@ -12,6 +12,9 @@ const props = defineProps({
   },
   size: {
     type: String,
+  },
+  color: {
+    type: String
   }
 });
 const fontClass = computed(() => {
@@ -20,5 +23,5 @@ const fontClass = computed(() => {
 </script>
 
 <style scoped>
-@import '//at.alicdn.com/t/c/font_4241670_fn7uq340m5m.css';
+@import '//at.alicdn.com/t/c/font_4241670_pxsecydd0to.css';
 </style>

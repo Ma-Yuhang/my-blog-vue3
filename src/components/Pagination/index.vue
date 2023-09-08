@@ -61,10 +61,7 @@ const props = defineProps({
     default: 10,
   },
 });
-const $emit = defineEmits([
-  'update:current-page',
-  'current-page',
-]);
+const $emit = defineEmits(['update:current-page', 'current-page']);
 // 计算出总页数
 const totalPage = computed(() => {
   return Math.ceil(props.total / props.pageSize);
@@ -99,6 +96,9 @@ const changePageHandle = (page) => {
     page = 1;
   } else if (page > totalPage.value) {
     page = totalPage.value;
+  }
+  if (page === props.currentPage) {
+    return;
   }
   $emit('update:current-page', page);
   $emit('current-page', page);

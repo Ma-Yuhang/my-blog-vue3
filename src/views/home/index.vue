@@ -1,20 +1,14 @@
 <template>
-  <div>
-    <Pagination :total="total" :pageSize="pageSize" v-model:current-page="current" @current-page="changePage"/>
-  </div>
+  <div class="home">home</div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-import Pagination from '@/components/Pagination.vue';
+<script setup></script>
 
-let total = ref(213)
-let pageSize = ref(10)
-let current = ref(13)
-
-const changePage = (page) => {
-  console.log('页码改变了');
+<style scoped>
+.home {
+  width: 500px;
+  height: 500px;
+  border: 2px solid;
+  margin: 0 auto;
 }
-</script>
-
-<style scoped></style>
+</style>
