@@ -10,7 +10,7 @@
 defineProps(['item'])
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .long-list-item {
   text-align: center;
   height: 54px;

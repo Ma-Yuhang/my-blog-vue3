@@ -13,20 +13,20 @@
 import { useRouter } from 'vue-router';
 
 // 路由对象
-const $router = useRouter()
+const $router = useRouter();
 
 const goTodo = () => {
-  $router.push('/demo/todo')
-}
+  $router.push('/demo/todo');
+};
 const goCarousel = () => {
-  $router.push('/demo/carousel')
-}
+  $router.push('/demo/carousel');
+};
 const goLongList = () => {
-  $router.push('/demo/longList')
-}
+  $router.push('/demo/longList');
+};
 const goLoading = () => {
-  $router.push('/demo/loading')
-}
+  $router.push('/demo/loading');
+};
 </script>
 
 <style scoped></style>

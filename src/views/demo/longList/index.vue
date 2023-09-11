@@ -9,17 +9,17 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
-import LongListItem from '@/components/longListItem.vue'
-import RecycleScroller from '@/components/RecycleScroller.vue'
+import { reactive } from 'vue';
+import LongListItem from '@/components/LongList/LongListItem.vue';
+import RecycleScroller from '@/components/LongList/RecycleScroller.vue';
 // 长列表数据
-let listData = reactive([])
+let listData = reactive([]);
 
 for (let i = 0; i < 10000; i++) {
   listData.push({
     id: i + 1,
-    count: i + 1
-  })
+    count: i + 1,
+  });
 }
 </script>
 

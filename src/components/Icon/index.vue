@@ -23,5 +23,5 @@ const fontClass = computed(() => {
 </script>
 
 <style scoped>
-@import '//at.alicdn.com/t/c/font_4241670_pxsecydd0to.css';
+@import '//at.alicdn.com/t/c/font_4241670_ux2siyyw0b.css';
 </style>

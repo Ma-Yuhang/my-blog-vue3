@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    <Menu />
+    <Contact />
   </div>
 </template>
 
 <script setup>
-import Menu from '@/components/Menu'
+import Contact from '@/components/Contact'
 </script>
 
 <style scoped>
@@ -14,5 +14,7 @@ import Menu from '@/components/Menu'
   height: 500px;
   border: 2px solid;
   margin: 0 auto;
+  padding-top: 200px;
+  overflow: hidden;
 }
 </style>

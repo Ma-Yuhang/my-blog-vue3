@@ -7,8 +7,8 @@
   "info": "icon-about",
   "code": "icon-code",
   "weixin": "icon-weixin",
-  "email": "icon-email",
-  "github": "icon-github",
+  "email": "icon-youxiang",
+  "github": "icon-github1",
   "qq": "icon-QQ1",
   "up": "icon-arrow-up",
   "down": "icon-arrow-down",
@@ -17,5 +17,6 @@
   "firstPage": "icon-xiangzuoshouqi-copy",
   "lastPage": "icon-xiangzuoshouqi-copy-copy",
   "empty": "icon-empty1-copy",
-  "chat": "icon-liuyan"
+  "chat": "icon-liuyan",
+  "blog": "icon-blog"
 }

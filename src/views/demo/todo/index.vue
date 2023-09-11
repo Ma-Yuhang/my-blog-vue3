@@ -11,20 +11,20 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref } from 'vue';
 
-const nums = reactive([1, 2, 3, 4, 5])
-const next = ref(6)
+const nums = reactive([1, 2, 3, 4, 5]);
+const next = ref(6);
 
 const addNum = () => {
-  const s = Math.floor(Math.random() * nums.length)
-  nums.splice(s, 0, next.value)
-  next.value++
-}
+  const s = Math.floor(Math.random() * nums.length);
+  nums.splice(s, 0, next.value);
+  next.value++;
+};
 const deleteNum = () => {
-  const s = Math.floor(Math.random() * nums.length)
-  nums.splice(s, 1)
-}
+  const s = Math.floor(Math.random() * nums.length);
+  nums.splice(s, 1);
+};
 </script>
 
 <style scoped>

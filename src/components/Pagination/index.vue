@@ -1,5 +1,5 @@
 <template>
-  <div class="pagination" v-if="totalPage > 1">
+  <div class="pagination-containter" v-if="totalPage > 1">
     <button
       class="btn"
       :class="{ disabled: currentPage === 1 }"
@@ -105,27 +105,28 @@ const changePageHandle = (page) => {
 };
 </script>
 
-<style scoped>
-.pagination {
+<style lang="scss" scoped>
+.pagination-containter {
   display: flex;
   align-items: center;
-}
-.btn {
-  border: 0;
-  background-color: inherit;
-  font-size: 16px;
-  cursor: pointer;
-  line-height: 16px;
-  vertical-align: baseline;
-  width: 30px;
-}
-.btn:not(.disabled):hover {
-  color: #ccc;
-}
-.actived {
-  font-weight: 700;
-}
-.btn.disabled {
-  cursor: not-allowed;
+  .btn {
+    border: 0;
+    background-color: inherit;
+    font-size: 16px;
+    cursor: pointer;
+    line-height: 16px;
+    vertical-align: baseline;
+    width: 30px;
+    &:not(.disabled):hover {
+      color: $gray;
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+    }
+  }
+  .actived {
+    font-weight: 700;
+  }
 }
 </style>
