@@ -15,7 +15,7 @@
       <li>
         <a href="https://github.com/Ma-Yuhang" target="_blank" class="item">
           <Icon class="icon" type="github" size="26px" />
-          <span class="text">https://github.com/Ma-Yuhang</span>
+          <span class="text">Ma-Yuhang</span>
         </a>
       </li>
       <!-- QQ -->
@@ -51,6 +51,7 @@ import Icon from '@/components/Icon';
   width: 100%;
   height: 100%;
   padding: 20px;
+  color: $gray;
   ul {
     li {
       display: flex;
@@ -76,7 +77,7 @@ import Icon from '@/components/Icon';
         position: absolute;
         width: 150px;
         height: 150px;
-        right: 30px;
+        right: -100px;
         top: -60px;
         z-index: 1;
         opacity: 0;

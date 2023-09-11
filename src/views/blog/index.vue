@@ -1,11 +1,10 @@
 <template>
   <div>
-    home
+    blog
   </div>
 </template>
 
 <script setup>
-
 </script>
 
 <style scoped>

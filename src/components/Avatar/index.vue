@@ -1,8 +1,14 @@
 <template>
-  <img
-    :src="url"
-    :style="{ width: size, height: size, borderRadius: '50%', dispaly: block }"
-  />
+  <div>
+    <img
+      :src="url"
+      :style="{
+        width: size,
+        height: size,
+        borderRadius: '50%',
+      }"
+    />
+  </div>
 </template>
 
 <script setup>
@@ -13,9 +19,7 @@ defineProps({
   },
   size: {
     type: String,
-    default: '100px',
+    default: '120px',
   },
 });
 </script>
-
-<style></style>

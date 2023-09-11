@@ -1,10 +1,42 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 
-const routes = [
+export const routes = [
   {
     path: '/',
-    name: 'home',
-    component: () => import('@/views/home/index.vue')
+    name: 'layout',
+    redirect: '/home',
+    children: [
+      {
+        path: 'home',
+        component: () => import('@/views/home/index.vue'),
+        name: 'home',
+        meta: { title: '首页', icon: 'home' },
+      },
+      {
+        path: 'blog',
+        component: () => import('@/views/blog/index.vue'),
+        name: 'blog',
+        meta: { title: '文章', icon: 'blog' },
+      },
+      {
+        path: 'about',
+        component: () => import('@/views/about/index.vue'),
+        name: 'about',
+        meta: { title: '关于我', icon: 'about' },
+      },
+      {
+        path: 'project',
+        component: () => import('@/views/project/index.vue'),
+        name: 'project',
+        meta: { title: '项目&效果', icon: 'code' },
+      },
+      {
+        path: 'message',
+        component: () => import('@/views/message/index.vue'),
+        name: 'message',
+        meta: { title: '留言板', icon: 'chat' },
+      },
+    ]
   },
   {
     path: '/demo',

@@ -1,6 +1,6 @@
 <template>
   <div>
-    home
+    message
   </div>
 </template>
 
