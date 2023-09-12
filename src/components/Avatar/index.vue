@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="avatar-containter">
     <img
       :src="url"
       :style="{

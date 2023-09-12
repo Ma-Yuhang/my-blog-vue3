@@ -1,21 +1,18 @@
 <template>
-  <div class="menu-containter">
-    <ul>
-      <li v-for="item in items" :key="item.link" @click="clickHandle(item)">
-        <div class="item" :class="{ selected: isSelected(item.link) }">
-          <Icon class="icon" :type="item.icon" size="24px" />
-          <span class="text">{{ item.title }}</span>
-        </div>
-      </li>
-    </ul>
-  </div>
+  <nav class="menu-containter">
+    <router-link v-for="item in items" :key="item.link" :to="item.link">
+      <div class="item" :class="{ selected: isSelected(item.link) }">
+        <Icon class="icon" :type="item.icon" size="24px" />
+        <span class="text">{{ item.title }}</span>
+      </div>
+    </router-link>
+  </nav>
 </template>
 
 <script setup>
-import { reactive, onMounted } from 'vue';
+import { reactive } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import Icon from '@/components/Icon';
-import { routes } from '@/router';
 // 拿到路由对象
 const $route = useRoute();
 const $router = useRouter();
@@ -49,7 +46,7 @@ const items = reactive([
 
 // 选中当前导航
 const isSelected = (path) => {
-  return $route.fullPath === path;
+  return $route.fullPath.startsWith(path);
 };
 // 点击导航跳转
 const clickHandle = (route) => {
@@ -61,25 +58,22 @@ const clickHandle = (route) => {
 .menu-containter {
   width: 100%;
   color: $gray;
-  ul {
-    li {
-      height: 45px;
-      line-height: 45px;
-      position: relative;
-      .item {
-        &.selected {
-          background-color: #2b2b2b;
-        }
-        display: flex;
-        align-items: center;
-        padding: 0 50px;
-        cursor: pointer;
-        &:hover {
-          color: #fff;
-        }
-        .text {
-          margin-left: 10px;
-        }
+  a {
+    height: 45px;
+    line-height: 45px;
+    .item {
+      &.selected {
+        background-color: #2b2b2b;
+      }
+      display: flex;
+      align-items: center;
+      padding: 0 50px;
+      cursor: pointer;
+      &:hover {
+        color: #fff;
+      }
+      .text {
+        margin-left: 10px;
       }
     }
   }

@@ -1,0 +1,27 @@
+@import '../styles/var.scss';
+.message {
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  transform: translateX(-50%);
+  transition: 0.4s;
+  opacity: 0;
+  z-index: 999;
+  border-radius: 5px;
+  padding: 10px 30px;
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  white-space: nowrap;
+  &-success {
+    background-color: $success;
+  }
+  &-info {
+    background-color: $lightWords;
+  }
+  &-warning {
+    background-color: $warn;
+  }
+  &-error {
+    background-color: $danger;
+  }
+}
