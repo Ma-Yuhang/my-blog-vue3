@@ -8,8 +8,8 @@ Mock.mock("/api/banner", "get", {
       id: "1",
       midImg: "http://mdrs.yuanjin.tech/img/20201031141507.jpg",
       bigImg: "http://mdrs.yuanjin.tech/img/20201031141350.jpg",
-      title: "凛冬将至",
-      description: "人唯有恐惧的时候方能勇敢",
+      title: "想开一家早餐店",
+      description: "名字叫早点见面",
     },
     {
       id: "2",

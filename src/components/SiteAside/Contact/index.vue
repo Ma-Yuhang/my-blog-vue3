@@ -94,6 +94,12 @@ import Icon from '@/components/Icon';
         img {
           width: 100%;
           height: 100%;
+          // 不可拖拽
+          -webkit-user-drag: none; /* Safari */
+          -khtml-user-drag: none; /* Konqueror HTML */
+          -moz-user-drag: none; /* Firefox */
+          -o-user-drag: none; /* Old Opera */
+          user-drag: none; /* Standard */
         }
       }
     }

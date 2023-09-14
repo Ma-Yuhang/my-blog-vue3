@@ -7,7 +7,7 @@ export default defineConfig({
   proxy: {
     'api': {
       target: 'http://test.my-site.com',
-      // changeOrigin: true,
+      changeOrigin: true,
       // pathRewrite: {
       //   ['^' + 'api']: ''
       // }

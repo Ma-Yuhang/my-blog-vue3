@@ -48,10 +48,6 @@ const items = reactive([
 const isSelected = (path) => {
   return $route.fullPath.startsWith(path);
 };
-// 点击导航跳转
-const clickHandle = (route) => {
-  $router.push(route.link);
-};
 </script>
 
 <style lang="scss" scoped>

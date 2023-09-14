@@ -51,6 +51,7 @@ const handleLoaded = () => {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    user-select: none;
   }
   .placeholder {
     filter: blur(2vw);
