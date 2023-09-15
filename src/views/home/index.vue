@@ -1,5 +1,10 @@
 <template>
-  <div class="home-containter" ref="containter" @wheel="handleWheel">
+  <div
+    v-loading="isLoading"
+    class="home-containter"
+    ref="containter"
+    @wheel="handleWheel"
+  >
     <ul
       class="carousel"
       :style="{
@@ -40,26 +45,31 @@ import { onMounted, ref, onUnmounted } from 'vue';
 import Icon from '@/components/Icon';
 import { getBannerList } from '@/api/banner.js';
 import CarouselItem from './CarouselItem.vue';
-
+import { useGetData } from '@/hooks';
+// let isLoading = ref(true)
 // 获取到容器的containter
 let containter = ref();
-let banners = ref([]);
+// let banners = ref([]);
 // 当前显示的是第几张图片
 let bannersIndex = ref(1);
 // 容器的高度
 let clientHeight = ref(null);
 // 是否在滚动中
 let resizing = ref(false);
-const getBanners = async () => {
-  const { data } = await getBannerList();
-  banners.value = data;
-};
 
+// const getBanners = async () => {
+//   const res = await getBannerList();
+//   banners.value = res.data;
+//   isLoading = false
+// };
+
+// 使用hooks简化(远程请求数据)
+const { data: banners, isLoading } = useGetData(getBannerList, []);
 onMounted(() => {
   clientHeight.value = containter.value.clientHeight;
   window.addEventListener('resize', handleResize);
   // 获取图片数据
-  getBanners();
+  // getBanners();
 });
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize);

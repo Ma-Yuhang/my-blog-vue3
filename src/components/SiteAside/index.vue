@@ -16,7 +16,7 @@ import Contact from './Contact';
 
 <style lang="scss" scoped>
 .site-aside-containter {
-  width: 250px;
+  width: 100%;
   height: 100%;
   background-color: #000;
   .avatar-containter {

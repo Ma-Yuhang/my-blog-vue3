@@ -148,13 +148,13 @@ const handleMouseLeave = () => {
   .title {
     font-size: 26px;
     letter-spacing: 3px;
-    bottom: 30%;
+    bottom: 20%;
   }
   .desc {
     font-size: 20px;
     padding-left: 2em;
     color: $gray;
-    bottom: 20%;
+    bottom: 15%;
   }
 }
 </style>

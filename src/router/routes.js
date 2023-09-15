@@ -17,6 +17,12 @@ export default [
     meta: { title: '文章', icon: 'blog' },
   },
   {
+    path: '/blog/cate/:categoryId',
+    component: () => import('@/views/blog/index.vue'),
+    name: 'CategoryBlog',
+    meta: { title: '文章', icon: 'blog' },
+  },
+  {
     path: '/about',
     component: () => import('@/views/about/index.vue'),
     name: 'about',

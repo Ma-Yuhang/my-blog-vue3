@@ -108,7 +108,8 @@ const changePageHandle = (page) => {
 <style lang="scss" scoped>
 .pagination-containter {
   display: flex;
-  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
   .btn {
     border: 0;
     background-color: inherit;
