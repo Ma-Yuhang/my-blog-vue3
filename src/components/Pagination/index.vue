@@ -37,6 +37,7 @@
     >
       <Icon type="lastPage" size="12px" />
     </button>
+    <span style="margin-left: 10px">共{{ totalPage }}页</span>
   </div>
 </template>
 

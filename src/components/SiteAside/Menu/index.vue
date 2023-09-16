@@ -11,11 +11,10 @@
 
 <script setup>
 import { reactive } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 import Icon from '@/components/Icon';
 // 拿到路由对象
 const $route = useRoute();
-const $router = useRouter();
 const items = reactive([
   {
     link: '/home',
@@ -23,8 +22,8 @@ const items = reactive([
     title: '首页',
   },
   {
-    link: '/blog',
-    icon: 'blog',
+    link: '/article',
+    icon: 'article',
     title: '文章',
   },
   {

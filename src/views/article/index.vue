@@ -1,16 +1,16 @@
 <template>
   <Layout>
     <template #default>
-      <BlogList />
+      <ArticleList />
     </template>
     <template #right>
-      <BlogCategory />
+      <ArticleCategory />
     </template>
   </Layout>
 </template>
 
 <script setup>
 import Layout from '@/components/Layout';
-import BlogCategory from './components/BlogCategory';
-import BlogList from './components/BlogList';
+import ArticleCategory from './components/ArticleCategory';
+import ArticleList from './components/ArticleList';
 </script>

@@ -1,10 +1,15 @@
 <template>
   <ul class="menu-list-containter">
     <li v-for="(item, i) in list" :key="i">
-      <span :class="{ actived: item.isSelected }" @click="handleClick(item)">{{
-        item.name
-      }}</span>
-      <MenuList :list="item.children" @select="handleClick" />
+      <div :class="{ actived: item.isSelected }" @click="handleClick(item)">
+        <span>{{ item.name }}</span>
+        <span class="aside" v-if="item.aside">{{ item.aside }}</span>
+      </div>
+      <MenuList
+        v-if="item.children"
+        :list="item.children"
+        @select="handleClick"
+      />
     </li>
   </ul>
 </template>
@@ -18,7 +23,9 @@ defineProps({
 });
 const $emit = defineEmits(['select']);
 const handleClick = (item) => {
-  $emit('select', item);
+  if (!item.isSelected) {
+    $emit('select', item);
+  }
 };
 </script>
 <script>
@@ -30,23 +37,27 @@ export default {
 <style lang="scss" scoped>
 .menu-list-containter {
   font-size: 16px;
-  width: 400px;
+  width: 100%;
   height: 100%;
-  background-color: aquamarine;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   .menu-list-containter {
     margin-left: 1em;
   }
   li {
     min-height: 40px;
     line-height: 40px;
+    font-size: 14px;
     cursor: pointer;
-    &:hover {
-      color: $warn;
-    }
+    // &:hover {
+    //   color: $warn;
+    // }
     .actived {
       color: $warn;
       font-weight: bold;
+    }
+    .aside {
+      margin-left: 10px;
     }
   }
 }
