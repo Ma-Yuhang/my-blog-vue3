@@ -4,7 +4,7 @@
     <div class="aside">
       <span>日期: {{ formatDate(articleInfo.createDate) }}</span>
       <span>浏览: {{ articleInfo.scanNumber }}</span>
-      <a href="">评论: {{ articleInfo.commentNumber }}</a>
+      <a href="#data-form-container">评论: {{ articleInfo.commentNumber }}</a>
       <a href="">{{ articleInfo.category.name }}</a>
     </div>
     <div v-html="articleInfo.htmlContent" class="markdown-body"></div>

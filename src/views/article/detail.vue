@@ -2,13 +2,18 @@
   <div class="article-detail-containter">
     <Layout>
       <template #default>
-        <div class="main" v-loading="isLoading" >
-          <ArticleDetail :articleInfo="articleInfo" v-if="articleInfo"/>
+        <div class="main" @scroll="handleScroll" ref="scrollEle">
+          <div v-loading="isLoading">
+            <ArticleDetail :articleInfo="articleInfo" v-if="articleInfo" />
+          </div>
+          <div>
+            <ArticleComment v-if="!isLoading" />
+          </div>
         </div>
       </template>
       <template #right>
         <div class="article-TOC" v-loading="isLoading">
-          <ArticleTOC :toc="articleInfo.toc" v-if="articleInfo"/>
+          <ArticleTOC :toc="articleInfo.toc" v-if="articleInfo" />
         </div>
       </template>
     </Layout>
@@ -16,19 +21,29 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, provide } from 'vue';
 import { getBlog } from '@/api/blog';
 import { useRoute } from 'vue-router';
 import Layout from '@/components/Layout';
 import ArticleDetail from './components/ArticleDetail';
+import ArticleComment from './components/ArticleComment';
 import ArticleTOC from './components/ArticleTOC';
 
 const $route = useRoute();
 
 let isLoading = ref(true);
 let articleInfo = ref();
+let scrollEle = ref();
+let scrollBottom = ref();
+// 提供修改scrollBottom的值的函数
+const updateBottom = (newBottom) => {
+  scrollBottom.value = newBottom;
+};
 onMounted(() => {
   getData();
+  // window.addEventListener('scroll', () => {
+
+  // })
 });
 
 const getData = async () => {
@@ -36,8 +51,15 @@ const getData = async () => {
   const res = await getBlog(id);
   articleInfo.value = res.data;
   isLoading.value = false;
-  console.log(res);
 };
+
+const handleScroll = () => {
+  const scrollTop = scrollEle.value.scrollTop;
+  const scrollHeight = scrollEle.value.scrollHeight;
+  const clientHeight = scrollEle.value.clientHeight;
+  scrollBottom.value = scrollHeight - scrollTop - clientHeight;
+};
+provide('scrollBottom', { scrollBottom, updateBottom });
 </script>
 
 <style lang="scss" scoped>
@@ -50,6 +72,7 @@ const getData = async () => {
     padding: 20px;
     width: 100%;
     height: 100%;
+    scroll-behavior: smooth;
   }
   .article-TOC {
     padding: 20px;

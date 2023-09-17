@@ -27,10 +27,10 @@ export function postComment(commentInfo) {
 }
 
 // 获取所有评论
-export function getComments(blogid, page = 1, limit = 10) {
+export function getComments(blogId, page = 1, limit = 10) {
   return request.get("/comment", {
     params: {
-      blogid,
+      blogId,
       page,
       limit,
     },
