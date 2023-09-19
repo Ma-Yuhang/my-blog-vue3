@@ -10,9 +10,9 @@ const router = createRouter({
 
 router.beforeEach((to, from) => {
   if (to.meta && to.meta.title) {
-    document.title = to.meta.title
+    document.title = to.meta.title + '-' + 'Ma-Yuhang'
   } else {
-    document.title = '个人博客'
+    document.title = 'Ma-Yuhang'
   }
 })
 

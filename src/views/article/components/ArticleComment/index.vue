@@ -14,6 +14,7 @@
 import { onMounted, ref, computed, inject, watch } from 'vue';
 import MessageArea from '@/components/MessageArea';
 import { getComments, postComment } from '@/api/blog';
+import { debounce } from '@/utils'
 import { useRoute } from 'vue-router';
 
 const $route = useRoute();
@@ -30,13 +31,33 @@ onMounted(() => {
 let { scrollBottom } = inject('scrollBottom');
 
 const blogId = computed(() => {
-  return $route.params.id, page.value, limit.value;
+  return $route.params.id;
 });
+// 是不是最后一页
+const isLastPage = computed(() => {
+  return comments.value.length >= total.value;
+});
+
 const getData = async () => {
   const { data } = await getComments(blogId.value, page.value, limit.value);
   comments.value = [...comments.value, ...data.rows];
   total.value = data.total;
   isListLoading.value = false;
+};
+
+// 加载更多
+const getMoreData = () => {
+  // 是最后一页或者正在加载 就return
+  if (isLastPage.value || isListLoading.value) {
+    console.log('没了');
+    return;
+  }
+  if (scrollBottom.value < 50) {
+    isListLoading.value = true;
+    // 加载更多，请求下一页
+    page.value++;
+    getData();
+  }
 };
 
 const handleSubmit = async (formData, callback) => {
@@ -49,17 +70,9 @@ const handleSubmit = async (formData, callback) => {
   comments.value.unshift(res.data);
   total.value++;
   callback('添加成功');
-  console.log(comments.value);
 };
 
-watch(scrollBottom, () => {
-  if (isListLoading.value == false && scrollBottom.value < 50) {
-    isListLoading.value = true;
-    // 加载更多，请求下一页
-    page.value++;
-    getData();
-  }
-});
+watch(scrollBottom, debounce(getMoreData));
 </script>
 
 <style lang="scss" scoped>

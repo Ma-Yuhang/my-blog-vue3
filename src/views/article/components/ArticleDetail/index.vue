@@ -5,13 +5,27 @@
       <span>日期: {{ formatDate(articleInfo.createDate) }}</span>
       <span>浏览: {{ articleInfo.scanNumber }}</span>
       <a href="#data-form-container">评论: {{ articleInfo.commentNumber }}</a>
-      <a href="">{{ articleInfo.category.name }}</a>
+      <router-link
+        :to="{
+          name: 'ArticleCategory',
+          params: {
+            categoryId: articleInfo.category.id,
+          },
+          query: {
+            page: 1,
+            limit: 10,
+          },
+        }"
+        >{{ articleInfo.category.name }}</router-link
+      >
     </div>
     <div v-html="articleInfo.htmlContent" class="markdown-body"></div>
+    <ToTop />
   </div>
 </template>
 
 <script setup>
+import ToTop from '@/components/ToTop';
 import { formatDate } from '@/utils';
 import 'highlight.js/styles/github.css';
 import '@/styles/markdown.css';

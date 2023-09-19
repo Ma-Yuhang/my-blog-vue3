@@ -1,6 +1,6 @@
 <template>
   <div
-    v-loading="isLoading"
+    v-loading="bannerStore.isLoading"
     class="home-containter"
     ref="containter"
     @wheel="handleWheel"
@@ -12,7 +12,7 @@
       }"
       @transitionend="handleTransitionend"
     >
-      <li v-for="banner in banners" :key="banner.id">
+      <li v-for="banner in bannerStore.banners" :key="banner.id">
         <CarouselItem :banner="banner" />
       </li>
     </ul>
@@ -26,13 +26,13 @@
     <div
       class="icon icon-down"
       @click="switchTo(bannersIndex + 1)"
-      v-show="bannersIndex < banners.length"
+      v-show="bannersIndex < bannerStore.banners.length"
     >
       <Icon type="down" size="26px" />
     </div>
     <ul class="indicator">
       <li
-        v-for="item in banners.length"
+        v-for="item in bannerStore.banners.length"
         :class="{ actived: item === bannersIndex }"
         @click="switchTo(item)"
       ></li>
@@ -43,13 +43,13 @@
 <script setup>
 import { onMounted, ref, onUnmounted } from 'vue';
 import Icon from '@/components/Icon';
-import { getBannerList } from '@/api/banner.js';
 import CarouselItem from './CarouselItem.vue';
-import { useGetData } from '@/hooks';
-// let isLoading = ref(true)
+import { useBannerStore } from '@/store';
+
+// 拿到banner仓库
+const bannerStore = useBannerStore();
 // 获取到容器的containter
 let containter = ref();
-// let banners = ref([]);
 // 当前显示的是第几张图片
 let bannersIndex = ref(1);
 // 容器的高度
@@ -57,19 +57,11 @@ let clientHeight = ref(null);
 // 是否在滚动中
 let resizing = ref(false);
 
-// const getBanners = async () => {
-//   const res = await getBannerList();
-//   banners.value = res.data;
-//   isLoading = false
-// };
-
-// 使用hooks简化(远程请求数据)
-const { data: banners, isLoading } = useGetData(getBannerList, []);
 onMounted(() => {
   clientHeight.value = containter.value.clientHeight;
   window.addEventListener('resize', handleResize);
   // 获取图片数据
-  // getBanners();
+  bannerStore.setBanners();
 });
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize);
@@ -87,7 +79,7 @@ const handleWheel = (e) => {
   if (resizing.value) {
     return;
   }
-  if (e.deltaY > 100 && bannersIndex.value < banners.value.length) {
+  if (e.deltaY > 100 && bannersIndex.value < bannerStore.banners.length) {
     resizing.value = true;
     bannersIndex.value++;
   } else if (e.deltaY < -100 && bannersIndex.value > 1) {

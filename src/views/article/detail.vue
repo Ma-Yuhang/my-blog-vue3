@@ -28,22 +28,22 @@ import Layout from '@/components/Layout';
 import ArticleDetail from './components/ArticleDetail';
 import ArticleComment from './components/ArticleComment';
 import ArticleTOC from './components/ArticleTOC';
-
 const $route = useRoute();
 
 let isLoading = ref(true);
 let articleInfo = ref();
 let scrollEle = ref();
 let scrollBottom = ref();
-// 提供修改scrollBottom的值的函数
-const updateBottom = (newBottom) => {
-  scrollBottom.value = newBottom;
-};
 onMounted(() => {
   getData();
-  // window.addEventListener('scroll', () => {
-
-  // })
+});
+// 刷新页面之后自动跳到锚点位置
+onMounted(() => {
+  const hash = location.hash;
+  location.hash = '';
+  setTimeout(() => {
+    location.hash = hash;
+  }, 1000);
 });
 
 const getData = async () => {
@@ -59,7 +59,7 @@ const handleScroll = () => {
   const clientHeight = scrollEle.value.clientHeight;
   scrollBottom.value = scrollHeight - scrollTop - clientHeight;
 };
-provide('scrollBottom', { scrollBottom, updateBottom });
+provide('scrollBottom', { scrollBottom, scrollEle });
 </script>
 
 <style lang="scss" scoped>

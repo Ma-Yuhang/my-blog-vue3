@@ -1,11 +1,11 @@
 <template>
-  <div class="contact-containter">
+  <div class="contact-containter" v-loading="settingStore.isLoading" >
     <ul>
       <!-- 微信 -->
       <li>
         <a class="item">
           <Icon class="icon" type="weixin" size="26px" />
-          <span class="text">a19883315871</span>
+          <span class="text">{{ settingStore.settings.weixin }}</span>
         </a>
         <div class="QR-code">
           <img src="./img/QRcode-weixin.jpg" />
@@ -13,19 +13,19 @@
       </li>
       <!-- github -->
       <li>
-        <a href="https://github.com/Ma-Yuhang" target="_blank" class="item">
+        <a :href="settingStore.settings.github" target="_blank" class="item">
           <Icon class="icon" type="github" size="26px" />
-          <span class="text">Ma-Yuhang</span>
+          <span class="text">{{ settingStore.settings.githubName }}</span>
         </a>
       </li>
       <!-- QQ -->
       <li>
         <a
-          href="tencent://message/?Menu=yes&uin=2312165827&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45"
+          :href="`tencent://message/?Menu=yes&uin=${settingStore.settings.qq}&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45`"
           class="item"
         >
           <Icon class="icon" type="qq" size="26px" />
-          <span class="text">2312165827</span>
+          <span class="text">{{ settingStore.settings.qq }}</span>
         </a>
         <div class="QR-code">
           <img src="./img/QRcode-qq.jpg" />
@@ -33,9 +33,9 @@
       </li>
       <!-- 邮箱 -->
       <li>
-        <a href="mailto:ma_yuhang@sina.com" class="item">
+        <a :href="`mailto:${settingStore.settings.mail}`" class="item">
           <Icon class="icon" type="email" size="26px" />
-          <span class="text">ma_yuhang@sina.com</span>
+          <span class="text">{{ settingStore.settings.mail }}</span>
         </a>
       </li>
     </ul>
@@ -43,7 +43,14 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
 import Icon from '@/components/Icon';
+import { useSettingStore } from '@/store';
+const settingStore = useSettingStore();
+
+onMounted(() => {
+  settingStore.setSettings();
+});
 </script>
 
 <style lang="scss" scoped>
@@ -51,6 +58,7 @@ import Icon from '@/components/Icon';
   width: 100%;
   padding: 20px;
   color: $gray;
+  position: relative;
   ul {
     li {
       display: flex;
