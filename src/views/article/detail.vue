@@ -23,12 +23,13 @@
 <script setup>
 import { onMounted, ref, provide } from 'vue';
 import { getBlog } from '@/api/blog';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import Layout from '@/components/Layout';
 import ArticleDetail from './components/ArticleDetail';
 import ArticleComment from './components/ArticleComment';
 import ArticleTOC from './components/ArticleTOC';
 const $route = useRoute();
+const $router = useRouter();
 
 let isLoading = ref(true);
 let articleInfo = ref();
@@ -49,6 +50,9 @@ onMounted(() => {
 const getData = async () => {
   const id = $route.params.id;
   const res = await getBlog(id);
+  if (!res) {
+    $router.push('/404');
+  }
   articleInfo.value = res.data;
   isLoading.value = false;
 };

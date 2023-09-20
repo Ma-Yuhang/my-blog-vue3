@@ -49,6 +49,7 @@
         </div>
       </li>
     </ul>
+    <Empty v-if="data.length == 0 && !isLoading" text="没有文章哦"/>
     <!-- 分页放到这里 -->
     <Pagination
       :total="total"
@@ -62,6 +63,7 @@
 import { onMounted, ref, computed, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import Pagination from '@/components/Pagination';
+import Empty from '@/components/Empty';
 import { getBlogs } from '@/api/blog';
 import { formatDate } from '@/utils';
 
@@ -69,7 +71,7 @@ import { formatDate } from '@/utils';
 const $route = useRoute();
 const $router = useRouter();
 
-let data = ref({});
+let data = ref([]);
 let isLoading = ref(true);
 let total = ref(0);
 let containterEle = ref(null); // 容器Dom

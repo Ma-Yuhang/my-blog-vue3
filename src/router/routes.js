@@ -78,4 +78,14 @@ export default [
       }
     ]
   },
+  {
+    path: '/:catchAll(.*)',
+    name: '404',
+    component: () => import('@/views/404/index.vue'),
+  },
+  // {
+  //   path:'/404',
+  //   component: () => import('@/views/404/index.vue'),
+  //   name: '404',
+  // }
 ]

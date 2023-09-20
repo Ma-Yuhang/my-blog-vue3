@@ -1,5 +1,5 @@
 <template>
-  <div class="project-container" v-loading="projectStore.loading">
+  <div class="project-container" v-loading="projectStore.isLoading">
     <div
       v-for="item in projectStore.projectList"
       :key="item.id"
@@ -37,11 +37,16 @@
         </p>
       </div>
     </div>
+    <Empty
+      v-if="projectStore.projectList.length == 0 && !projectStore.isLoading"
+      text="没有项目哦"
+    />
   </div>
 </template>
 
 <script setup>
 import { onMounted } from 'vue';
+import Empty from '@/components/Empty';
 import { useProjectStore } from '@/store';
 const projectStore = useProjectStore();
 onMounted(() => {
