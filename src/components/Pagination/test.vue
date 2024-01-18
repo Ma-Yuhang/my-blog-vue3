@@ -15,11 +15,9 @@ import Pagination from '@/components/Pagination';
 
 let total = ref(213);
 let pageSize = ref(10);
-let current = ref(13);
+let current = ref(12);
 
 const changePage = (page) => {
-  console.log('页码改变了');
+  console.log('页码改变了', page);
 };
 </script>
-
-<style scoped></style>

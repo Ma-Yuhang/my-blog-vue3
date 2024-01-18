@@ -49,10 +49,10 @@ const props = defineProps({
     type: Number,
     required: true,
   },
-  currentPage: {
-    type: Number,
-    default: 1,
-  },
+  // currentPage: {
+  //   type: Number,
+  //   default: 1,
+  // },
   pageSize: {
     type: Number,
     default: 10,
@@ -62,7 +62,12 @@ const props = defineProps({
     default: 10,
   },
 });
-const $emit = defineEmits(['update:current-page', 'current-page']);
+const $emit = defineEmits(['current-page']);
+// 使用宏defineModel
+// 底层是 defineProps(['currentPage']) + defineEmits['update:current-page']
+// defineModel也会将currentPage注入到props中,同样也可以使用变量接收
+// 对于currentPage，使用props.currentPage和currentPage.value都可，但是如果要修改只能修改currentPage.value
+const currentPage = defineModel('currentPage', { type: Number, default: 1 });
 // 计算出总页数
 const totalPage = computed(() => {
   return Math.ceil(props.total / props.pageSize);
@@ -101,7 +106,8 @@ const changePageHandle = (page) => {
   if (page === props.currentPage) {
     return;
   }
-  $emit('update:current-page', page);
+  currentPage.value = page;
+  // $emit('update:current-page', page);
   $emit('current-page', page);
 };
 </script>
