@@ -62,9 +62,10 @@ const props = defineProps({
     default: 10,
   },
 });
-const $emit = defineEmits(['current-page']);
+// const $emit = defineEmits(['currentPage','update:currentPage']);
+const $emit = defineEmits(['currentPage']);
 // 使用宏defineModel
-// 底层是 defineProps(['currentPage']) + defineEmits['update:current-page']
+// 底层是 defineProps(['currentPage']) + defineEmits['update:currentPage']
 // defineModel也会将currentPage注入到props中,同样也可以使用变量接收
 // 对于currentPage，使用props.currentPage和currentPage.value都可，但是如果要修改只能修改currentPage.value
 const currentPage = defineModel('currentPage', { type: Number, default: 1 });
@@ -107,8 +108,8 @@ const changePageHandle = (page) => {
     return;
   }
   currentPage.value = page;
-  // $emit('update:current-page', page);
-  $emit('current-page', page);
+  // $emit('update:currentPage', page);
+  $emit('currentPage', page);
 };
 </script>
 

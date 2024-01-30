@@ -2,7 +2,7 @@
   <div>
     <Pagination
       :total="total"
-      :pageSize="pageSize"
+      :page-size="pageSize"
       v-model:current-page="current"
       @current-page="changePage"
     />
@@ -18,6 +18,6 @@ let pageSize = ref(10);
 let current = ref(12);
 
 const changePage = (page) => {
-  console.log('页码改变了', page);
+  console.log('页码改变了', current.value, page);
 };
 </script>
