@@ -1,6 +1,6 @@
 <template>
   <div class="image-loading-containter">
-    <img v-if="!imgVisiabled" class="placeholder" :src="placeholder" />
+    <img v-if="!imgVisibled" class="placeholder" :src="placeholder" />
     <img
       @load="handleLoaded"
       :src="src"
@@ -27,12 +27,12 @@ const props = defineProps({
 });
 const $emit = defineEmits(['load']);
 let imgLoaded = ref(false);
-let imgVisiabled = ref(false);
+let imgVisibled = ref(false);
 // 原图加载完成时
 const handleLoaded = () => {
   imgLoaded.value = true;
   setTimeout(() => {
-    imgVisiabled.value = true;
+    imgVisibled.value = true;
     $emit('load');
   }, props.duration);
 };

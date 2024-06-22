@@ -56,6 +56,7 @@
       :current-page="page"
       :pageSize="limit"
       @current-page="changePage"
+      :visibleNumber='20'
     />
   </div>
 </template>

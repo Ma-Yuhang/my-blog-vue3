@@ -16,7 +16,7 @@
     </button>
     <button
       class="btn"
-      v-for="item in visiablePage"
+      v-for="item in visiblePage"
       :key="item"
       :class="{ actived: currentPage === item }"
       @click="changePageHandle(item)"
@@ -57,7 +57,7 @@ const props = defineProps({
     type: Number,
     default: 10,
   },
-  visiableNumber: {
+  visibleNumber: {
     type: Number,
     default: 10,
   },
@@ -75,7 +75,7 @@ const totalPage = computed(() => {
 });
 // 计算出显示的最小页数
 const minPage = computed(() => {
-  let min = props.currentPage - Math.floor(props.pageSize / 2);
+  let min = props.currentPage - Math.floor(props.visibleNumber / 2);
   if (min < 1) {
     min = 1;
   }
@@ -83,19 +83,19 @@ const minPage = computed(() => {
 });
 // 计算出显示的最大页数
 const maxPage = computed(() => {
-  let max = minPage.value + props.visiableNumber - 1;
+  let max = minPage.value + props.visibleNumber - 1;
   if (max > totalPage.value) {
     max = totalPage.value;
   }
   return max;
 });
 // 计算出遍历的数字页码
-const visiablePage = computed(() => {
-  let pageArr = [];
+const visiblePage = computed(() => {
+  const renderPage = [];
   for (let i = minPage.value; i <= maxPage.value; i++) {
-    pageArr.push(i);
+    renderPage.push(i);
   }
-  return pageArr;
+  return renderPage;
 });
 // 点击页码
 const changePageHandle = (page) => {
